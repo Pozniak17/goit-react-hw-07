@@ -1,6 +1,6 @@
 // import { nanoid } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { addContacts, deleteContacts, fetchContacts } from "./contactsOps";
+import { addContact, deleteContact, fetchContacts } from "./contactsOps";
 
 const initialContacts = {
   items: [],
@@ -26,22 +26,22 @@ export const contactsSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(addContacts.pending, (state) => {
+      .addCase(addContact.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(addContacts.fulfilled, (state, action) => {
+      .addCase(addContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items.unshift(action.payload);
       })
-      .addCase(addContacts.rejected, (state, action) => {
+      .addCase(addContact.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(deleteContacts.pending, (state) => {
+      .addCase(deleteContact.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(deleteContacts.fulfilled, (state, action) => {
+      .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         const index = state.items.findIndex(
@@ -49,18 +49,12 @@ export const contactsSlice = createSlice({
         );
         state.items.splice(index, 1);
       })
-      .addCase(deleteContacts.rejected, (state, action) => {
+      .addCase(deleteContact.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
   },
 });
-
-// Генератори екшенів
-// export const { addContacts, deleteContacts } = contactsSlice.actions;
-
-export const { fetchingInProgress, fetchingSuccess, fetchingInError } =
-  contactsSlice.actions;
 
 // Редюсер слайсу
 export const contactsReducer = contactsSlice.reducer;

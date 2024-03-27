@@ -27,7 +27,7 @@ export default function App() {
       <h2>Contacts</h2>
 
       <Filter />
-      {isLoading && !error && <b>Request in progress...</b>}
+      {isLoading && <b>Request in progress...</b>}
       {error && <p>{error}</p>}
       <ContactList />
       <GlobalStyle />

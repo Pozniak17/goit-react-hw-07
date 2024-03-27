@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const ContactItem = styled.li`
   background-color: ${(props) => props.theme.colors.white};
+  border: 2px solid #9200ab;
   margin-bottom: ${(props) => props.theme.spacing(2)}; //10px
-  border: ${(props) => props.theme.borders.normal} white;
   padding: 12px;
   display: flex;
   justify-content: space-between;
@@ -12,7 +12,6 @@ export const ContactItem = styled.li`
   width: 100%;
   border-radius: ${(props) => props.theme.radii.middle}; //8px
   box-shadow: ${(props) => props.theme.shadows.standart};
-  border: 2px solid #9200ab;
 `;
 
 export const Button = styled.button`
