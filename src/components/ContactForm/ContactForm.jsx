@@ -1,6 +1,5 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { addContacts } from "../../redux/contactsSlice";
 
 import {
   FormContainer,
@@ -8,6 +7,7 @@ import {
   FormInput,
   Button,
 } from "./ContactForm.styled";
+import { addContacts } from "../../redux/contactsOps";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -29,7 +29,8 @@ export default function ContactForm() {
   const handleSumbit = (event) => {
     event.preventDefault();
     // передаємо через проп onSumit => App
-    dispatch(addContacts(name, number));
+    dispatch(addContacts({ name, number }));
+    // dispatch(addContacts(name, number));
 
     reset();
   };
