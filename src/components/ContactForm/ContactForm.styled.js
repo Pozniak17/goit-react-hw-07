@@ -23,6 +23,7 @@ export const FormInput = styled.input`
 `;
 
 export const Button = styled.button`
+  padding: 5px;
   background-color: ${(props) => props.theme.colors.white};
   border-radius: ${(props) => props.theme.radii.middle};
   border: ${(props) => props.theme.borders.normal} grey;
