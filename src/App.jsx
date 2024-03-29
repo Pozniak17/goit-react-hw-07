@@ -11,7 +11,7 @@ import { fetchContacts } from "./redux/contactsOps";
 
 export default function App() {
   const dispatch = useDispatch();
-  const isLoading = useDispatch(selectIsLoading);
+  // const isLoading = useDispatch(selectIsLoading);
   const error = useSelector(selectError);
 
   // Викликаємо операцію
