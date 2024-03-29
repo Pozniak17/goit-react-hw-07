@@ -11,7 +11,7 @@ import { fetchContacts } from "./redux/contactsOps";
 
 export default function App() {
   const dispatch = useDispatch();
-  // const isLoading = useDispatch(selectIsLoading);
+  const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   // Викликаємо операцію
@@ -28,6 +28,7 @@ export default function App() {
 
       <Filter />
       {error && <p>{error}</p>}
+      {isLoading && <b>Request in progress...</b>}
       <ContactList />
       <GlobalStyle />
     </Layout>
