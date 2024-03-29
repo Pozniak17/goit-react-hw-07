@@ -5,14 +5,14 @@ import ContactList from "./components/ContactList/ContactList";
 import { GlobalStyle } from "./components/GlobalStyle.styled";
 import { Layout } from "./components/Layout.styled";
 import Filter from "./components/SearchBox/SearchBox";
-import { getError, getIsLoading } from "./redux/contactsSlice";
+import { selectError, selectIsLoading } from "./redux/contactsSlice";
 import { useEffect } from "react";
 import { fetchContacts } from "./redux/contactsOps";
 
 export default function App() {
   const dispatch = useDispatch();
-  const isLoading = useDispatch(getIsLoading);
-  const error = useSelector(getError);
+  const isLoading = useDispatch(selectIsLoading);
+  const error = useSelector(selectError);
 
   // Викликаємо операцію
   useEffect(() => {
@@ -27,7 +27,6 @@ export default function App() {
       <h2>Contacts</h2>
 
       <Filter />
-      {isLoading && <b>Request in progress...</b>}
       {error && <p>{error}</p>}
       <ContactList />
       <GlobalStyle />

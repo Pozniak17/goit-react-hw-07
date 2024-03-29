@@ -1,6 +1,7 @@
 // import { nanoid } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { addContact, deleteContact, fetchContacts } from "./contactsOps";
+import { selectNameFilter } from "./filtersSlice";
 
 const initialContacts = {
   items: [],
@@ -53,7 +54,19 @@ export const contactsSlice = createSlice({
 // Редюсер слайсу
 export const contactsReducer = contactsSlice.reducer;
 
-// export const selectContact = (state) => state.contacts.items;
-export const getContacts = (state) => state.contacts;
-export const getIsLoading = (state) => state.contacts.isLoading;
-export const getError = (state) => state.contacts.error;
+export const selectContacts = (state) => state.contacts.items;
+export const selectIsLoading = (state) => state.contacts.isLoading;
+export const selectError = (state) => state.contacts.error;
+
+export const selectFilteredContacts = createSelector(
+  [selectContacts, selectNameFilter],
+  (contacts, nameFilter) => {
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(nameFilter.toLowerCase())
+    );
+  }
+);
+
+//  const filteredContacts = items.filter((contact) =>
+//    contact.name.toLowerCase().includes(filter.toLowerCase())
+//  );
